@@ -57,7 +57,10 @@ const data = [
 ];
 const Chart = () => {
     return (
+
         <div className='w-[1100px] h-[500px] mt-9'>
+        <div className='w-[1000px] h-[700px] mt-9'>
+
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart width={500} height={300} data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
