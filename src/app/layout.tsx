@@ -1,24 +1,26 @@
-import Navbar from "@/components/navbar"
-import Sidebar from "@/components/sidebar"
+"use client";
+
+import Navbar from "@/components/navbar";
+import Sidebar from "@/components/sidebar";
+import useSidebarToggle from "@/hooks/toggle"; 
 import "./globals.css";
 
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const { isOpen, toggleSidebar } = useSidebarToggle(); 
+
   return (
     <html lang="en">
       <body>
-        
-        <Navbar/>
+        <Navbar />
         <div className="flex">
-          <div className=' hidden md:block h-[100vh] w-[300px]'>
-            <Sidebar/>
+      
+          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
+
+          
+          <div className={`p-5 transition-all ${isOpen ? "ml-64" : "ml-16"} w-full md:max-w-[1140px]`}>
+            <main >{children}</main>
           </div>
-          <div className="p-5 w-full md:max-w-[1140px]">
-            <main>{children}</main>
-            </div>
         </div>
-        
-       
       </body>
     </html>
   );
