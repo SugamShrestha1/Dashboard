@@ -1,24 +1,16 @@
 "use client";
-
-import { useEffect } from "react";
 import { Banknote, ShoppingCart, Heart, } from "lucide-react";
-
-
-import {  Banknote, ShoppingCart, Heart } from "lucide-react";
-
-import { Card, CardContent } from "../ui/card";
+import { Card, CardContent } from "../../app/ui/card";
 import Chart from "../chart/chart";
 
+
+
 const Dashboardcard = () => {
-  
+
 
     return (
-        <div className="px-6 py-4">
+        <div className='px-6 py-4  flex-grow'>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-
-                <Card className="bg-gradient-to-r from-blue-300 to-blue-700 text-white rounded-xl shadow-lg p-6 ">
-                
                 <Card className="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-xl shadow-lg p-6">
 
                     <CardContent>
@@ -42,11 +34,8 @@ const Dashboardcard = () => {
                 </Card>
 
 
-                <Card className="bg-gradient-to-r from-green-300 to-green-700 text-white rounded-xl shadow-lg p-6">
-
-                
                 <Card className="bg-gradient-to-r from-green-500 to-green-700 text-white rounded-xl shadow-lg p-6">
- 
+
                     <CardContent>
                         <h3 className="text-2xl text-center font-bold">Total Profit</h3>
                         <h2 className="text-4xl font-semibold text-center">Rs 280,000</h2>
@@ -57,15 +46,11 @@ const Dashboardcard = () => {
                 </Card>
             </div>
 
-
-
-            <div className="mt-6 ">
-
-            
-            <div className="mt-6">
-
+            <div className="mt-6 flex-grow">
                 <Chart />
             </div>
+
+
         </div>
     );
 };

@@ -2,23 +2,40 @@
 
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
-import useSidebarToggle from "@/hooks/toggle"; 
+import useSidebarToggle from "@/hooks/toggle";
 import "./globals.css";
+import SettingSidebar from "@/app/settings/page";
+import { useState } from "react";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isOpen, toggleSidebar } = useSidebarToggle(); 
+  const { isOpen, toggleSidebar } = useSidebarToggle();
+  const [showSecondSidebar, setShowSecondSidebar] = useState(false);
+
+  const handleSettingsClick = () => {
+    setShowSecondSidebar((prev) => !prev);
+  };
 
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <Navbar/>
         <div className="flex">
-      
-          <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
 
-          
-          <div className={`p-5 transition-all ${isOpen ? "ml-64" : "ml-16"} w-full md:max-w-[1140px]`}>
-            <main >{children}</main>
+          <div className="flex transition-all">
+
+            <div className={`transition-all ${isOpen ? "w-64" : "w-16"}`}>
+              <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} onSettingsClick={handleSettingsClick} />
+            </div>
+            {showSecondSidebar && (
+              <div className={`transition-all bg-gray-200 ${isOpen ? "w-64" : "w-60"}`}>
+                <SettingSidebar />
+              </div>
+            )}
+          </div>
+
+
+          <div className="p-5 flex-1 pt-14">
+            <main>{children}</main>
           </div>
         </div>
       </body>

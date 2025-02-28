@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
     LineChart,
     Line,
@@ -7,9 +7,8 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-    ReferenceLine,
     ResponsiveContainer,
-} from 'recharts'
+} from 'recharts';
 
 const data = [
     {
@@ -55,14 +54,15 @@ const data = [
         amt: 2100,
     },
 ];
+
+
+
 const Chart = () => {
     return (
-
-        <div className='w-[1100px] h-[500px] mt-9'>
-        <div className='w-[1000px] h-[700px] mt-9'>
-
-            <ResponsiveContainer width="100%" height="100%">
-                <LineChart width={500} height={300} data={data}>
+        
+        <div  className=' w-full  h-[500px] mt-9 flex-grow '>
+            <ResponsiveContainer width="100%" height="100%" >
+                <LineChart data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" padding={{ left: 30, right: 30 }} />
                     <YAxis />
@@ -73,6 +73,8 @@ const Chart = () => {
                 </LineChart>
             </ResponsiveContainer>
         </div>
-    )
+    
+    );
 };
+
 export default Chart;
